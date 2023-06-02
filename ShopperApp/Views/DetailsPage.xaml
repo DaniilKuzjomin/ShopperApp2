@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ShopperApp.Views.DetailsPage"
+             xmlns:vm="clr-namespace:ShopperApp.ViewModels"
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <vm:DetailsViewModel />
+    </ContentPage.BindingContext>
+
+    <StackLayout>
+        <Label FontSize="Large" Text="How to use Shopper?"/>
+        <Label FontSize="Medium" Text="Open Cart page - when you can press add button and add product what you need to buy"/>
+        <Label FontSize="Medium" Text="When you add product you can choose product name and quantity"/>
+        <Label FontSize="Medium" Text="On Cart page you can press on product and delete it in menu"/>
+        <Label FontSize="Medium" Text="Below on Cart page you can start timer, it helps you remember to make a purchase"/>
+    </StackLayout>
+     
+    
+     
+
+</ContentPage>

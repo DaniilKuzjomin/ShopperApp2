@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ShopperApp.Views.ProductPage">
+    <StackLayout>
+        <Label Text="Name" FontSize="Large" />
+        <Entry Text="{Binding Name}" MaxLength="15" TextChanged="OnNameTextChanged"/>
+        <Label Text="Quantity" FontSize="Large"/>
+        <Entry Text="{Binding Quantity}" Keyboard="Numeric" MaxLength="2" TextChanged="OnQuantityTextChanged"/>
+        <StackLayout Orientation="Vertical">
+            <Button Text="Add" Clicked="SaveProduct"/>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>
