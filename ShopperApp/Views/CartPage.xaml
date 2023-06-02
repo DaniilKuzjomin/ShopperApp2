@@ -4,7 +4,7 @@
              x:Class="ShopperApp.Views.CartPage"
              xmlns:vm="clr-namespace:ShopperApp.ViewModels"
              Title="{Binding Title}">
-    
+
     <ContentPage.BindingContext>
         <vm:CartViewModel />
     </ContentPage.BindingContext>
@@ -13,33 +13,40 @@
         <ToolbarItem Text="Add" Clicked="CreateProduct"/>
     </ContentPage.ToolbarItems>
 
-
-    <StackLayout>
-        <ListView x:Name="productsList" ItemsSource="{Binding}" ItemSelected="OnItemSelected">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <ViewCell.View>
-                            <StackLayout Orientation="Horizontal">
+    <ScrollView>
+        <StackLayout>
+            <ListView x:Name="productsList" ItemsSource="{Binding}" ItemSelected="OnItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
                                 <StackLayout Orientation="Horizontal">
-                                    <Label Text="Product:" FontSize="Medium"/>
-                                    <Label Text="{Binding Name}" FontSize="Large"/>
-                                    <Label Text="Quantity:" FontSize="Medium"/>
-                                    <Label Text="{Binding Quantity}" FontSize="Large"/>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="Product:" FontSize="Medium"/>
+                                        <Label Text="{Binding Name}" FontSize="Large"/>
+                                        <Label Text="Quantity:" FontSize="Medium"/>
+                                        <Label Text="{Binding Quantity}" FontSize="Large"/>
+                                    </StackLayout>
+                                    <Label x:Name="statusLabel" Text="🟩" FontSize="Large" HorizontalOptions="End">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OnLabelTapped" />
+                                        </Label.GestureRecognizers>
+                                    </Label>
                                 </StackLayout>
-                                <Label x:Name="statusLabel" Text="🟩" FontSize="Large" HorizontalOptions="End">
-                                    <Label.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="OnLabelTapped" />
-                                    </Label.GestureRecognizers>
-                                </Label>
-                            </StackLayout>
-                        </ViewCell.View>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
 
-
-
+            <StackLayout Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="End">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="End">
+                    <Entry x:Name="timeEntry" Placeholder="Select time - up to 24 hours" Keyboard="Numeric" TextChanged="OnTimeEntryTextChanged" />
+                    <Button x:Name="startButton" Text="Start timer" Clicked="StartTimer" />
+                </StackLayout>
+                <Button x:Name="stopButton" Text="Stop timer" Clicked="StopTimer" IsEnabled="False" HorizontalOptions="Center" />
+                <Label x:Name="timerLabel" Text="00:00:00" HorizontalOptions="Center" VerticalOptions="End" FontSize="Large" />
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>
